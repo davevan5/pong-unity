@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     public int PlayerNumber = 1;
 
-    public float Speed = 30;
+    public float Speed = 30.0f;
 
     private Rigidbody2D playerBody;
 
