@@ -7,10 +7,15 @@ public class GoalController : MonoBehaviour
 
     private int score;
 
+    public void Reset()
+    {
+        score = 0;
+        ScoreText.text = "0";
+    }
+
     private void Start()
     {
-        ScoreText.text = "0";
-        score = 0;
+        Reset();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -18,10 +23,18 @@ public class GoalController : MonoBehaviour
         if (collision.gameObject.tag != "Pong")
             return;
 
-        score++;
-        ScoreText.text = score.ToString();
-
         var controller = collision.gameObject.GetComponent<PongController>();
         controller.Reset();
+
+        score++;
+
+        if (score > 10)
+        {
+            transform.parent.GetComponent<GoalsController>().RestartGame();
+        }
+
+        ScoreText.text = score.ToString();
     }
+
+
 }
