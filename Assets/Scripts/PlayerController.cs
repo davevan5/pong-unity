@@ -15,7 +15,11 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        float v = Input.GetAxis("Vertical" + PlayerNumber);
-        playerBody.velocity = new Vector2(0, v) * Speed;
+        var v = Input.GetAxis("Vertical" + PlayerNumber);
+
+        if ((playerBody.position.y > 15 && v > 0) || (playerBody.position.y < -15 && v < 0))
+            playerBody.velocity = new Vector2(0, 0);
+        else
+            playerBody.velocity = new Vector2(0, v) * Speed;
     }
 }
