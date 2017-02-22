@@ -31,6 +31,8 @@ public class PongController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
+        coll.gameObject.GetComponent<AudioSource>().Play();
+
         if (coll.gameObject.tag != "Player")
             return;
 
